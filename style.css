@@ -46,7 +46,6 @@ body {
   gap: 6px;
 }
 
-/* Texto Superior Derecha */
 .top-title-right {
   text-align: right;
   font-size: 11px;
@@ -54,7 +53,6 @@ body {
   margin-bottom: 2px;
 }
 
-/* Inputs limpios */
 .inp-clean {
   border: none !important;
   outline: none !important;
@@ -73,74 +71,94 @@ body {
 /* Grid Encabezado */
 .header-grid {
   display: grid;
-  grid-template-columns: 1fr 1.05fr;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
   align-items: start;
 }
 
-/* Columna Izquierda */
+/* Columna Izquierda: Logo y Encabezado estilo IMSS */
 .header-left {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 4px;
 }
 
 .logo-container img {
-  max-width: 240px;
-  max-height: 48px;
+  max-width: 260px;
+  height: 55px;
   object-fit: contain;
 }
 
+.header-divider {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #777;
+  margin: 6px 0 12px 0;
+}
+
 .titulos-bloque {
-  margin-top: 1px;
+  margin-bottom: 10px;
 }
 
 .subtitulo {
-  font-size: 10px;
-  font-weight: bold;
-  margin: 0;
-  line-height: 1.2;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  margin: 0 0 4px 0;
 }
 
 .titulo {
-  font-size: 16px;
-  font-weight: 900;
-  margin: 1px 0 0 0;
-  line-height: 1.1;
+  font-size: 22px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .barcode-container {
-  margin-top: 6px;
+  margin-top: 8px;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 /* Cuadro Paciente Derecha */
 .box-paciente {
-  border: 2px solid #000;
-  padding: 6px 8px;
+  border: 1.5px solid #000;
+  padding: 6px 10px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
-.nss-row {
+.nss-amed-grid {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 1px;
-  font-size: 11px;
 }
 
-.amed-right {
+.col-nss, .col-amed {
   display: flex;
-  align-items: center;
-  gap: 4px;
+  flex-direction: column;
+}
+
+.col-amed {
+  text-align: right;
+  align-items: flex-end;
+}
+
+.input-value {
+  font-size: 13px;
+  margin-top: 2px;
 }
 
 .lbl-top {
   font-weight: bold;
+  font-size: 12px;
+}
+
+.paciente-nombre {
+  font-size: 12px;
 }
 
 .label-under {
@@ -153,7 +171,7 @@ body {
 
 .grid-2col {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 1fr;
   gap: 2px 6px;
   font-size: 10px;
 }
@@ -171,46 +189,56 @@ body {
   width: 100%;
 }
 
-/* Sección Folio y QR */
+/* Sección Folio, Vigencia y QR */
+.middle-section {
+  margin: 8px 0;
+}
+
 .middle-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 75px;
+  grid-template-columns: 1fr 75px;
   align-items: center;
-  margin: 4px 0;
+  gap: 15px;
 }
 
 .folio-container {
-  text-align: center;
+  text-align: left;
+  padding-left: 30px;
 }
 
 .folio-text {
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 0 0 4px 0;
+}
+
+.folio-text span {
   font-weight: bold;
-  margin: 0 0 2px 0;
 }
 
 .vigencia {
-  font-size: 7px;
+  font-size: 11px;
   font-weight: bold;
   margin: 0;
-  line-height: 1;
+  line-height: 1.2;
 }
 
-/* Contenedor del QR ajustado para no encimarse */
 .qr-container {
-  border: 1px solid #000;
-  padding: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 72px;
-  height: 72px;
-  margin-left: auto;
+}
+
+.farmacia-msg {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 12px 0 0 0;
+  text-align: left;
 }
 
 /* Cuerpo de la Receta */
 .body-box {
-  border: 2px solid #000;
+  border: 1.5px solid #000;
   padding: 8px 10px;
   min-height: 380px;
   display: flex;
@@ -225,7 +253,8 @@ body {
 }
 
 .input-fecha {
-  width: 120px;
+  width: 250px;
+  font-size: 11px;
 }
 
 .prescripcion-area {
@@ -242,7 +271,7 @@ body {
   border: none;
   outline: none;
   resize: none;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   background: transparent;
   color: transparent;
@@ -257,7 +286,7 @@ body {
   width: 100%;
   height: 100%;
   min-height: 260px;
-  font-size: 12px;
+  font-size: 11px;
   line-height: 1.5;
   position: absolute;
   top: 0;
