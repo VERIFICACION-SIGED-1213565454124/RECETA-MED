@@ -26,12 +26,11 @@
   <!-- Hoja Documento -->
   <div class="documento">
     
-    <!-- Encabezado numérico de página -->
     <div class="top-title-right">Página 1 de 1</div>
 
-    <!-- Encabezado -->
+    <!-- Sección Superior: Encabezado y Cuadro del Paciente -->
     <div class="header-grid">
-      <!-- Columna Izquierda: Logo, Títulos y Código de Barras -->
+      <!-- Columna Izquierda: Logo y Títulos -->
       <div class="header-left">
         <div class="logo-container">
           <img id="logoImg" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/IMSS_Logo.svg" alt="Logo IMSS">
@@ -43,7 +42,7 @@
         </div>
       </div>
 
-      <!-- Columna Derecha: Cuadro del Paciente -->
+      <!-- Columna Derecha: Cuadro Compacto del Paciente -->
       <div class="box-paciente">
         <div class="nss-amed-row">
           <div class="nss-group">
@@ -56,7 +55,7 @@
           </div>
         </div>
 
-        <div class="campo-linea center paciente-bloque">
+        <div class="paciente-bloque center">
           <span class="label-top-sm">NOMBRE DEL PACIENTE</span>
           <input type="text" value="PATRICIA MARÍA VEGA SOLIS" class="input-full center bold inp-clean paciente-nombre">
         </div>
@@ -91,20 +90,21 @@
       </div>
     </div>
 
-    <!-- Sección Intermedia: Código de barras, Folio y QR -->
+    <!-- Sección Intermedia: Barras, Folio y QR -->
     <div class="middle-section">
       <div class="middle-grid">
         <div class="barcode-container">
           <svg id="barcode"></svg>
         </div>
 
-        <div class="folio-container">
-          <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span>24010400686466</span></p>
-          <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
-        </div>
-
-        <div class="qr-container">
-          <div id="qrcode"></div>
+        <div class="folio-qr-block">
+          <div class="folio-container">
+            <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span id="folioDisplay">24010400686466</span></p>
+            <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
+          </div>
+          <div class="qr-container">
+            <div id="qrcode"></div>
+          </div>
         </div>
       </div>
 
@@ -158,12 +158,12 @@
   <script>
     function actualizarCodigo() {
       const folio = document.getElementById('folioInput').value || '000000000';
-      document.querySelector('.folio-text span').innerText = folio;
+      document.getElementById('folioDisplay').innerText = folio;
 
       JsBarcode("#barcode", folio, {
         format: "CODE128",
-        height: 50,
-        width: 1.6,
+        height: 60,
+        width: 1.8,
         displayValue: false,
         margin: 0
       });
