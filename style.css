@@ -12,7 +12,6 @@ body {
   align-items: center;
 }
 
-/* Panel Superior */
 .control-panel {
   background: #ffffff;
   padding: 10px 20px;
@@ -34,21 +33,19 @@ body {
   font-weight: bold;
 }
 
-/* Documento Principal */
 .documento {
   background: white;
   width: 210mm;
   min-height: 270mm;
-  padding: 8mm 12mm 12mm 12mm;
+  padding: 8mm 12mm 10mm 12mm;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 6px;
 }
 
 .top-title-right {
   text-align: right;
-  font-size: 13px;
+  font-size: 11px;
   color: #000;
   margin-bottom: 2px;
 }
@@ -57,7 +54,7 @@ body {
   border: none !important;
   outline: none !important;
   background: transparent;
-  font-size: 11px;
+  font-size: 10px;
   box-shadow: none !important;
 }
 
@@ -67,15 +64,14 @@ body {
 .text-right { text-align: right; }
 .input-full { width: 100%; }
 
-/* Grid Encabezado */
+/* Grid Encabezado con Cuadro Reducido */
 .header-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
+  grid-template-columns: 1fr 430px;
   gap: 15px;
   align-items: start;
 }
 
-/* Columna Izquierda */
 .header-left {
   display: flex;
   flex-direction: column;
@@ -83,8 +79,8 @@ body {
 }
 
 .logo-container img {
-  max-width: 280px;
-  height: 50px;
+  max-width: 230px;
+  height: 42px;
   object-fit: contain;
 }
 
@@ -92,7 +88,7 @@ body {
   width: 100%;
   border: none;
   border-top: 1px solid #aaa;
-  margin: 12px 0 16px 0;
+  margin: 6px 0 10px 0;
 }
 
 .titulos-bloque {
@@ -100,27 +96,29 @@ body {
 }
 
 .subtitulo {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
   margin: 0 0 2px 0;
+  letter-spacing: 0.3px;
 }
 
 .titulo {
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   letter-spacing: 0.5px;
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Cuadro Paciente con Doble Borde */
+/* Cuadro del Paciente Reducido y Compacto */
 .box-paciente {
   border: 3px double #000;
-  padding: 6px 10px;
+  padding: 4px 8px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 2px;
   background: #fff;
+  font-size: 9.5px;
 }
 
 .nss-amed-row {
@@ -133,48 +131,48 @@ body {
 .nss-group, .amed-group {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .lbl-bold {
   font-weight: bold;
-  font-size: 11px;
+  font-size: 9.5px;
 }
 
 .paciente-bloque {
-  margin: 2px 0;
+  margin: 1px 0;
 }
 
 .label-top-sm {
   display: block;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
   text-align: center;
   color: #000;
 }
 
 .paciente-nombre {
-  font-size: 12px;
+  font-size: 10.5px;
 }
 
 .curp-row {
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
 }
 
 .grid-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2px 6px;
-  font-size: 10px;
+  gap: 1px 4px;
+  font-size: 9.5px;
 }
 
 .campo-inline {
   display: flex;
   align-items: center;
-  gap: 4px;
-  font-size: 10px;
+  gap: 3px;
+  font-size: 9.5px;
   font-weight: bold;
   white-space: nowrap;
 }
@@ -185,21 +183,29 @@ body {
   gap: 1px;
 }
 
-/* Sección Folio, QR y Barras */
+/* Sección Intermedia Ajustada al Ancho del Bloque Izquierdo */
 .middle-section {
-  margin: 6px 0;
+  margin: 10px 0 6px 0;
 }
 
 .middle-grid {
   display: grid;
-  grid-template-columns: 240px 1fr 70px;
+  grid-template-columns: 1fr 430px;
   align-items: center;
-  gap: 10px;
+  gap: 15px;
 }
 
 .barcode-container {
   display: flex;
   justify-content: flex-start;
+  width: 100%;
+}
+
+.folio-qr-block {
+  display: grid;
+  grid-template-columns: 1fr 70px;
+  align-items: center;
+  gap: 10px;
 }
 
 .folio-container {
@@ -207,78 +213,78 @@ body {
 }
 
 .folio-text {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: bold;
-  margin: 0 0 4px 0;
+  margin: 0 0 3px 0;
 }
 
 .vigencia {
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: bold;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .qr-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .direccion-farmacia-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 .direccion-input {
-  width: 50%;
-  font-size: 12px;
+  width: 55%;
+  font-size: 10px;
 }
 
 .farmacia-msg {
-  font-size: 12px;
+  font-size: 10.5px;
   font-weight: bold;
   text-align: right;
 }
 
-/* Cuerpo de la Receta con Borde Completo */
+/* Cuerpo Principal de la Receta */
 .body-box {
-  border: 1px solid #666;
-  padding: 8px 12px;
-  min-height: 420px;
+  border: 1px solid #000;
+  padding: 6px 10px;
+  min-height: 390px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .fecha-row {
-  border-bottom: 1px solid #999;
-  padding-bottom: 4px;
+  border-bottom: 1px solid #777;
+  padding-bottom: 3px;
   width: 100%;
 }
 
 .input-fecha {
   width: 250px;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .prescripcion-area {
   position: relative;
   flex-grow: 1;
-  margin: 10px 0;
-  min-height: 280px;
+  margin: 6px 0;
+  min-height: 250px;
 }
 
 .prescripcion-area textarea {
   width: 100%;
   height: 100%;
-  min-height: 280px;
+  min-height: 250px;
   border: none;
   outline: none;
   resize: none;
-  font-size: 11px;
-  line-height: 1.5;
+  font-size: 10px;
+  line-height: 1.4;
   background: transparent;
   color: transparent;
   caret-color: black;
@@ -291,9 +297,9 @@ body {
 .meds-display {
   width: 100%;
   height: 100%;
-  min-height: 280px;
-  font-size: 11px;
-  line-height: 1.5;
+  min-height: 250px;
+  font-size: 10px;
+  line-height: 1.4;
   position: absolute;
   top: 0;
   left: 0;
@@ -312,23 +318,23 @@ body {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
   gap: 15px;
-  border-top: 1px solid #999;
-  padding-top: 6px;
-  margin-bottom: 8px;
+  border-top: 1px solid #777;
+  padding-top: 4px;
+  margin-bottom: 4px;
 }
 
 .imss-digital-row {
   display: grid;
-  grid-template-columns: 1fr 100px;
+  grid-template-columns: 1fr 80px;
   align-items: flex-end;
-  border-top: 1px solid #999;
-  padding-top: 6px;
+  border-top: 1px solid #777;
+  padding-top: 4px;
 }
 
 .legales-imss {
-  font-size: 9px;
+  font-size: 8.5px;
   margin: 0;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .link-bold {
@@ -338,11 +344,15 @@ body {
 
 .paciente-tag {
   text-align: right;
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: bold;
 }
 
-/* Impresión */
+@page {
+  size: A4;
+  margin: 0;
+}
+
 @media print {
   body {
     background: white;
@@ -353,7 +363,7 @@ body {
   }
   .documento {
     box-shadow: none;
-    padding: 0;
+    padding: 10mm 12mm;
     width: 100%;
   }
   .prescripcion-area textarea {
