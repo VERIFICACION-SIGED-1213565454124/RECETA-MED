@@ -64,7 +64,7 @@ body {
 .text-right { text-align: right; }
 .input-full { width: 100%; }
 
-/* Grid Encabezado con Cuadro Reducido */
+/* Grid Encabezado */
 .header-grid {
   display: grid;
   grid-template-columns: 1fr 430px;
@@ -72,10 +72,13 @@ body {
   align-items: start;
 }
 
+/* Alineación al medio del bloque izquierdo */
 .header-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  text-align: center;
+  padding-right: 10px;
 }
 
 .logo-container img {
@@ -92,7 +95,7 @@ body {
 }
 
 .titulos-bloque {
-  text-align: left;
+  text-align: center;
 }
 
 .subtitulo {
@@ -110,7 +113,7 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Cuadro del Paciente Reducido y Compacto */
+/* Cuadro del Paciente */
 .box-paciente {
   border: 3px double #000;
   padding: 4px 8px;
@@ -128,10 +131,18 @@ body {
   width: 100%;
 }
 
-.nss-group, .amed-group {
+.nss-group {
   display: flex;
   align-items: center;
   gap: 3px;
+}
+
+/* A MED. pegado completamente a la derecha */
+.amed-group {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-left: auto;
 }
 
 .lbl-bold {
@@ -183,7 +194,12 @@ body {
   gap: 1px;
 }
 
-/* Sección Intermedia Ajustada al Ancho del Bloque Izquierdo */
+/* Alineación a la derecha para la columna de matrícula */
+.right-align {
+  align-items: flex-end;
+}
+
+/* Sección Intermedia */
 .middle-section {
   margin: 10px 0 6px 0;
 }
@@ -195,9 +211,10 @@ body {
   gap: 15px;
 }
 
+/* Código de barras centrado en su bloque */
 .barcode-container {
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   width: 100%;
 }
 
@@ -248,7 +265,7 @@ body {
   text-align: right;
 }
 
-/* Cuerpo Principal de la Receta */
+/* Cuerpo Principal */
 .body-box {
   border: 1px solid #000;
   padding: 6px 10px;
