@@ -26,9 +26,12 @@
   <!-- Hoja Documento -->
   <div class="documento">
     
+    <!-- Título pequeño en esquina superior derecha -->
+    <div class="top-title-right">Receta Médica</div>
+
     <!-- Encabezado -->
     <div class="header-grid">
-      <!-- Columna Izquierda: Logo, Títulos y Código de Barras Alineados al Medio -->
+      <!-- Columna Izquierda: Logo, Títulos y Código de Barras centrados entre sí -->
       <div class="header-left">
         <div class="logo-container">
           <img id="logoImg" src="https://via.placeholder.com/240x50/ffffff/000000?text=LOGO+INSTITUCIONAL" alt="Logo">
@@ -80,9 +83,9 @@
       </div>
     </div>
 
-    <!-- Sección Central: Folio y QR en su propia fila independiente -->
+    <!-- Sección Central: Folio y QR ajustado sin tocar bordes -->
     <div class="middle-grid">
-      <div></div> <!-- Espacio para alinear -->
+      <div></div>
       <div class="folio-container">
         <p class="folio-text">Folio : <span id="folioDisplay">123456789</span></p>
         <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
@@ -100,7 +103,6 @@
         <input type="text" value="13/02/2001" class="input-fecha inp-clean">
       </div>
 
-      <!-- Área editable que subraya palabras en MAYÚSCULAS -->
       <div class="prescripcion-area">
         <textarea id="medsInput" oninput="formatearMedicamentos()" placeholder="Escriba aquí los medicamentos e indicaciones..."></textarea>
         <div id="medsFormatted" class="meds-display"></div>
@@ -141,11 +143,12 @@
         margin: 0
       });
 
+      // QR ajustado a 68px para evitar interrupción con los recuadros
       document.getElementById("qrcode").innerHTML = "";
       new QRCode(document.getElementById("qrcode"), {
         text: folio,
-        width: 80,
-        height: 80
+        width: 68,
+        height: 68
       });
     }
 
