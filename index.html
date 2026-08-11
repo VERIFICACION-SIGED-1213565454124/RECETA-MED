@@ -28,77 +28,80 @@
     
     <div class="top-title-right">Página 1 de 1</div>
 
-    <!-- Sección Superior: Encabezado y Cuadro del Paciente -->
-    <div class="header-grid">
-      <!-- Columna Izquierda: Logo y Títulos -->
-      <div class="header-left">
+    <!-- Estructura Principal en 2 Columnas -->
+    <div class="top-layout-grid">
+      
+      <!-- COLUMNA IZQUIERDA: Logo + Línea + Títulos + Código de Barras -->
+      <div class="left-column">
         <div class="logo-container">
           <img id="logoImg" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/IMSS_Logo.svg" alt="Logo IMSS">
         </div>
+        
         <hr class="header-divider">
+        
         <div class="titulos-bloque">
           <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
           <h1 class="titulo">RECETA INDIVIDUAL</h1>
         </div>
-      </div>
 
-      <!-- Columna Derecha: Cuadro Compacto del Paciente -->
-      <div class="box-paciente">
-        <div class="nss-amed-row">
-          <div class="nss-group">
-            <span class="lbl-bold">NSS:</span>
-            <input type="text" value="0396786874-0" class="inp-clean bold">
-          </div>
-          <div class="amed-group">
-            <span class="lbl-bold">A MED.:</span>
-            <input type="text" value="1F19780R" class="inp-clean bold text-right">
-          </div>
-        </div>
-
-        <div class="paciente-bloque center">
-          <span class="label-top-sm">NOMBRE DEL PACIENTE</span>
-          <input type="text" value="PATRICIA MARÍA VEGA SOLIS" class="input-full center bold inp-clean paciente-nombre">
-        </div>
-
-        <div class="curp-row">
-          <span class="lbl-bold">CURP:</span>
-          <input type="text" value="VESP781013MSPGLT02" class="inp-clean bold input-full">
-        </div>
-
-        <div class="grid-2col">
-          <div class="campo-inline">
-            <label>DELEGACIÓN:</label>
-            <input type="text" value="NUEVO LEON" class="inp-clean bold">
-          </div>
-          <div class="campo-inline">
-            <label>CVE PTAL</label>
-            <input type="text" value="010113252110" class="inp-clean bold">
-          </div>
-          <div class="campo-inline">
-            <label>UNIDAD:</label>
-            <input type="text" value="UMF No. 24" class="inp-clean bold">
-          </div>
-          <div class="campo-inline">
-            <label>TURNO:</label>
-            <input type="text" value="VESPERTINO" class="inp-clean bold">
-          </div>
-          <div class="campo-inline">
-            <label>CONSULTORIO:</label>
-            <input type="text" value="2" class="inp-clean bold">
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Sección Intermedia: Barras, Folio y QR -->
-    <div class="middle-section">
-      <div class="middle-grid">
         <div class="barcode-container">
           <svg id="barcode"></svg>
         </div>
+      </div>
 
-        <div class="folio-qr-block">
-          <div class="folio-container">
+      <!-- COLUMNA DERECHA: Cuadro del Paciente + Folio + QR -->
+      <div class="right-column">
+        
+        <!-- Cuadro del Paciente -->
+        <div class="box-paciente">
+          <div class="nss-amed-row">
+            <div class="nss-group">
+              <span class="lbl-bold">NSS:</span>
+              <input type="text" value="0396786874-0" class="inp-clean bold">
+            </div>
+            <div class="amed-group">
+              <span class="lbl-bold">A MED.:</span>
+              <input type="text" value="1F19780R" class="inp-clean bold text-right">
+            </div>
+          </div>
+
+          <div class="paciente-bloque center">
+            <span class="label-top-sm">NOMBRE DEL PACIENTE</span>
+            <input type="text" value="PATRICIA MARÍA VEGA SOLIS" class="input-full center bold inp-clean paciente-nombre">
+          </div>
+
+          <div class="curp-row">
+            <span class="lbl-bold">CURP:</span>
+            <input type="text" value="VESP781013MSPGLT02" class="inp-clean bold input-full">
+          </div>
+
+          <div class="grid-2col">
+            <div class="campo-inline">
+              <label>DELEGACIÓN:</label>
+              <input type="text" value="NUEVO LEON" class="inp-clean bold">
+            </div>
+            <div class="campo-inline">
+              <label>CVE PTAL</label>
+              <input type="text" value="010113252110" class="inp-clean bold">
+            </div>
+            <div class="campo-inline">
+              <label>UNIDAD:</label>
+              <input type="text" value="UMF No. 24" class="inp-clean bold">
+            </div>
+            <div class="campo-inline">
+              <label>TURNO:</label>
+              <input type="text" value="VESPERTINO" class="inp-clean bold">
+            </div>
+            <div class="campo-inline">
+              <label>CONSULTORIO:</label>
+              <input type="text" value="2" class="inp-clean bold">
+            </div>
+          </div>
+        </div>
+
+        <!-- Folio y QR debajo del cuadro paciente -->
+        <div class="folio-qr-wrapper">
+          <div class="folio-info">
             <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span id="folioDisplay">24010400686466</span></p>
             <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
           </div>
@@ -106,12 +109,15 @@
             <div id="qrcode"></div>
           </div>
         </div>
+
       </div>
 
-      <div class="direccion-farmacia-row">
-        <input type="text" value="Lerdo de Tejada 112, Real de Villa de García, 66000 García, N.L." class="inp-clean direccion-input">
-        <span class="farmacia-msg">Asegura tu medicamento presentando tu receta en Farmacia</span>
-      </div>
+    </div>
+
+    <!-- Fila Inferior de Dirección y Leyenda de Farmacia -->
+    <div class="direccion-farmacia-row">
+      <input type="text" value="Lerdo de Tejada 112, Real de Villa de García, 66000 García, N.L." class="inp-clean direccion-input">
+      <span class="farmacia-msg">Asegura tu medicamento presentando tu receta en Farmacia</span>
     </div>
 
     <!-- Cuerpo Principal de la Receta -->
@@ -162,7 +168,7 @@
 
       JsBarcode("#barcode", folio, {
         format: "CODE128",
-        height: 60,
+        height: 65,
         width: 1.8,
         displayValue: false,
         margin: 0
@@ -171,8 +177,8 @@
       document.getElementById("qrcode").innerHTML = "";
       new QRCode(document.getElementById("qrcode"), {
         text: folio,
-        width: 65,
-        height: 65
+        width: 70,
+        height: 70
       });
     }
 
