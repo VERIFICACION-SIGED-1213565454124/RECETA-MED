@@ -43,7 +43,7 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 /* Estilos de Entradas SIN SUBRAYADO */
@@ -51,35 +51,37 @@ body {
   border: none !important;
   outline: none !important;
   background: transparent;
-  font-size: 12px;
+  font-size: 11px;
   box-shadow: none !important;
 }
 
 .bold { font-weight: bold; }
 .center { text-align: center; }
 .right { text-align: right; }
-.w-small { width: 60px; }
+.text-right { text-align: right; }
+.w-small { width: 50px; }
 .input-full { width: 100%; }
 
 /* Grid Encabezado */
 .header-grid {
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 15px;
   align-items: start;
 }
 
-/* Columna Izquierda Unificada y Alineada */
+/* Columna Izquierda: ALINEADA AL MEDIO (CENTRO) */
 .header-left {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: 4px; /* Elementos juntos */
+  align-items: center; /* Centrado horizontal */
+  text-align: center; /* Centrado de texto */
+  gap: 3px;
 }
 
 .logo-container img {
-  max-width: 260px;
-  max-height: 55px;
+  max-width: 240px;
+  max-height: 50px;
   object-fit: contain;
 }
 
@@ -102,7 +104,9 @@ body {
 }
 
 .barcode-container {
-  margin-top: 6px;
+  margin-top: 4px;
+  display: flex;
+  justify-content: center;
 }
 
 /* Cuadro Paciente Derecha */
@@ -122,6 +126,12 @@ body {
   font-size: 11px;
 }
 
+.amed-right {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
 .lbl-top {
   font-weight: bold;
 }
@@ -138,14 +148,14 @@ body {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 2px 6px;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .campo-inline {
   display: flex;
   align-items: center;
   gap: 4px;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
   white-space: nowrap;
 }
@@ -156,20 +166,18 @@ body {
 
 /* Sección Folio y QR */
 .middle-grid {
-  display: flex;
-  justify-content: flex-end;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr 85px;
   align-items: center;
-  gap: 15px;
-  margin-top: -30px; /* Eleva el folio y QR para alinearlo con el código de barras */
+  margin-top: 2px;
 }
 
 .folio-container {
   text-align: center;
-  max-width: 220px;
 }
 
 .folio-text {
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   margin: 0 0 2px 0;
 }
@@ -183,12 +191,13 @@ body {
 
 .qr-container {
   border: 1px solid #000;
-  padding: 3px;
+  padding: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 92px;
-  height: 92px;
+  width: 84px;
+  height: 84px;
+  margin-left: auto;
 }
 
 /* Cuerpo de la Receta */
@@ -211,7 +220,7 @@ body {
   width: 120px;
 }
 
-/* Área de Prescripción Interactiva */
+/* Área de Prescripción */
 .prescripcion-area {
   position: relative;
   flex-grow: 1;
@@ -219,7 +228,6 @@ body {
   min-height: 260px;
 }
 
-/* Textarea visible mientras se edita */
 .prescripcion-area textarea {
   width: 100%;
   height: 100%;
@@ -238,7 +246,6 @@ body {
   z-index: 2;
 }
 
-/* Capa inferior que muestra el texto formateado (con subrayado en mayúsculas) */
 .meds-display {
   width: 100%;
   height: 100%;
@@ -254,19 +261,19 @@ body {
   word-wrap: break-word;
 }
 
-/* Regla para subrayar únicamente texto en MAYÚSCULAS */
 .subrayado-mayuscula {
   text-decoration: underline;
   font-weight: bold;
 }
 
+/* Pie de Receta SIN LÍNEA INFERIOR */
 .grid-medico {
   display: grid;
   grid-template-columns: 2fr 1.3fr 1fr;
   gap: 10px;
   border-top: 1px solid #000;
-  border-bottom: 1px solid #000;
-  padding: 4px 0;
+  /* Se eliminó border-bottom */
+  padding-top: 4px;
 }
 
 .paciente-tag {
@@ -291,7 +298,7 @@ body {
     width: 100%;
   }
   .prescripcion-area textarea {
-    display: none; /* En la impresión solo se ve la capa con el subrayado */
+    display: none;
   }
   .meds-display {
     position: relative;
