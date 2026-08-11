@@ -48,53 +48,57 @@
 
       <!-- Columna Derecha: Cuadro del Paciente -->
       <div class="box-paciente">
-        <div class="nss-amed-grid">
-          <div class="col-nss">
-            <span class="lbl-top">NSS:</span>
-            <input type="text" value="45465651" class="inp-clean bold input-value">
+        <div class="nss-amed-row">
+          <div class="nss-group">
+            <span class="lbl-bold">NSS:</span>
+            <input type="text" value="0396786874-0" class="inp-clean bold">
           </div>
-          <div class="col-amed">
-            <span class="lbl-top">A.MED</span>
-            <input type="text" value="16515615516" class="inp-clean bold input-value text-right">
+          <div class="amed-group">
+            <span class="lbl-bold">A MED.:</span>
+            <input type="text" value="1F19780R" class="inp-clean bold text-right">
           </div>
         </div>
 
-        <div class="campo-linea center">
-          <span class="label-under">NOMBRE DEL PACIENTE</span>
-          <input type="text" value="Jaime Leonardo Garcia Mendez" class="input-full center bold inp-clean paciente-nombre">
+        <div class="campo-linea center paciente-bloque">
+          <span class="label-top-sm">NOMBRE DEL PACIENTE</span>
+          <input type="text" value="PATRICIA MARÍA VEGA SOLIS" class="input-full center bold inp-clean paciente-nombre">
+        </div>
+
+        <div class="curp-row">
+          <span class="lbl-bold">CURP:</span>
+          <input type="text" value="VESP781013MSPGLT02" class="inp-clean bold input-full">
         </div>
 
         <div class="grid-2col">
           <div class="campo-inline">
             <label>DELEGACIÓN:</label>
-            <input type="text" value="Hermosillo" class="inp-clean">
+            <input type="text" value="NUEVO LEON" class="inp-clean bold">
           </div>
-          <div></div>
+          <div class="campo-inline">
+            <label>CVE PTAL</label>
+            <input type="text" value="010113252110" class="inp-clean bold">
+          </div>
           <div class="campo-inline">
             <label>UNIDAD:</label>
-            <input type="text" value="UMF 05" class="inp-clean">
-          </div>
-          <div class="campo-inline">
-            <label>Cva ptal:</label>
-            <input type="text" value="5651561" class="inp-clean">
-          </div>
-          <div class="campo-inline">
-            <label>CONSULTORIO:</label>
-            <input type="text" value="02" class="inp-clean">
+            <input type="text" value="UMF No. 24" class="inp-clean bold">
           </div>
           <div class="campo-inline">
             <label>TURNO:</label>
-            <input type="text" value="MATUTINO" class="inp-clean">
+            <input type="text" value="VESPERTINO" class="inp-clean bold">
+          </div>
+          <div class="campo-inline">
+            <label>CONSULTORIO:</label>
+            <input type="text" value="2" class="inp-clean bold">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Sección Central: Folio, Mensaje y QR -->
+    <!-- Sección Central: Folio, QR y Leyenda -->
     <div class="middle-section">
       <div class="middle-grid">
         <div class="folio-container">
-          <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span id="folioDisplay">24010400686466</span></p>
+          <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span>24010400686466</span></p>
           <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
         </div>
 
@@ -142,7 +146,7 @@
   <script>
     function actualizarCodigo() {
       const folio = document.getElementById('folioInput').value || '000000000';
-      document.getElementById('folioDisplay').innerText = folio;
+      document.querySelector('.folio-text span').innerText = folio;
 
       JsBarcode("#barcode", folio, {
         format: "CODE128",
@@ -189,9 +193,7 @@
     }
 
     document.getElementById('medsInput').value = 
-`APIXABÁN TABLETA. CADA TABLETA CONTIENE: APIXABÁN 5 MG. ENVASE CON 60 TABLETAS. Vía de administración: Oral. Una tableta cada 12 hora(s) durante 30 día(s). Cantidad a surtir: 1 ENV.
-
-ENOXAPARINA SOLUCIÓN INYECTABLE. CADA JERINGA PRELLENADA CONTIENE: ENOXAPARINA SÓDICA 40 MG/0.4 ML. ENVASE CON 10 JERINGAS PRELLENADAS. Vía de administración: Subcutánea. Una jeringa cada 24 hora(s) durante 10 día(s). Cantidad a surtir: 1 ENV.`;
+`SUBSALICILATO DE BISMUTO SUSPENSIÓN CADA 100 ML CONTIENEN: SUBSALICILATO DE BISMUTO 1.75 G. ENVASE CON 120 ML. Vía de administración: Oral. 30 ML cada 6 hora(s) durante 5 día(s).`;
 
     actualizarCodigo();
     formatearMedicamentos();
