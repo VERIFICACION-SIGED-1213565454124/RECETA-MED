@@ -12,15 +12,25 @@ body {
   align-items: center;
 }
 
+/* Panel Control Superior */
 .control-panel {
   background: #ffffff;
-  padding: 10px 20px;
+  padding: 12px 20px;
   border-radius: 6px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   display: flex;
   gap: 20px;
   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 210mm;
+}
+
+.panel-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .btn-print {
@@ -33,6 +43,7 @@ body {
   font-weight: bold;
 }
 
+/* Documento Hoja */
 .documento {
   background: white;
   width: 210mm;
@@ -72,7 +83,6 @@ body {
   align-items: start;
 }
 
-/* Alineación al medio del bloque izquierdo */
 .header-left {
   display: flex;
   flex-direction: column;
@@ -113,7 +123,7 @@ body {
   font-family: 'Times New Roman', Times, serif;
 }
 
-/* Cuadro del Paciente */
+/* Cuadro Paciente */
 .box-paciente {
   border: 3px double #000;
   padding: 4px 8px;
@@ -137,7 +147,6 @@ body {
   gap: 3px;
 }
 
-/* A MED. pegado completamente a la derecha */
 .amed-group {
   display: flex;
   align-items: center;
@@ -194,7 +203,6 @@ body {
   gap: 1px;
 }
 
-/* Alineación a la derecha para la columna de matrícula */
 .right-align {
   align-items: flex-end;
 }
@@ -211,11 +219,15 @@ body {
   gap: 15px;
 }
 
-/* Código de barras centrado en su bloque */
 .barcode-container {
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+#barcode {
+  max-width: 100%;
+  height: auto;
 }
 
 .folio-qr-block {
@@ -365,6 +377,80 @@ body {
   font-weight: bold;
 }
 
+/* =========================================================
+   ADAPTACIÓN RESPONSIVE / DISPOSITIVOS MÓVILES (WEB & PANTALLAS)
+   ========================================================= */
+@media screen and (max-width: 768px) {
+  body {
+    padding: 8px;
+  }
+
+  .control-panel {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .documento {
+    width: 100%;
+    min-height: auto;
+    padding: 12px;
+  }
+
+  .header-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .header-left {
+    padding-right: 0;
+  }
+
+  .middle-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .folio-qr-block {
+    grid-template-columns: 1fr auto;
+  }
+
+  .direccion-farmacia-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .direccion-input {
+    width: 100%;
+  }
+
+  .farmacia-msg {
+    text-align: left;
+  }
+
+  .grid-medico {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .right-align {
+    align-items: flex-start;
+  }
+
+  .imss-digital-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .paciente-tag {
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   REGLAS DE IMPRESIÓN (MANTIENE TAMAÑO A4 RIGUROSO)
+   ========================================================= */
 @page {
   size: A4;
   margin: 0;
@@ -381,7 +467,26 @@ body {
   .documento {
     box-shadow: none;
     padding: 10mm 12mm;
-    width: 100%;
+    width: 210mm !important;
+    min-height: 270mm;
+  }
+  .header-grid {
+    grid-template-columns: 1fr 430px !important;
+  }
+  .middle-grid {
+    grid-template-columns: 1fr 430px !important;
+  }
+  .grid-medico {
+    grid-template-columns: 2fr 1fr 1fr !important;
+  }
+  .right-align {
+    align-items: flex-end !important;
+  }
+  .imss-digital-row {
+    grid-template-columns: 1fr 80px !important;
+  }
+  .paciente-tag {
+    text-align: right !important;
   }
   .prescripcion-area textarea {
     display: none;
