@@ -3,83 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Generador de Receta Médica</title>
+  <title>Receta Médica</title>
   <link rel="stylesheet" href="style.css">
-  <!-- Librería para generar el código de barras -->
   <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.5/dist/JsBarcode.all.min.js"></script>
-  <!-- Librería para generar el código QR -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
 
-  <!-- Panel de control (No visible al imprimir) -->
+  <!-- Panel Superior -->
   <div class="control-panel">
-    <h2>Panel de Configuración</h2>
-    
-    <label>Logo de la Institución:</label>
-    <input type="file" id="logoInput" accept="image/*">
-
-    <label>Folio:</label>
-    <input type="text" id="folioInput" value="123456789" oninput="actualizarCodigo()">
-
+    <div>
+      <label>Logo: </label>
+      <input type="file" id="logoInput" accept="image/*">
+    </div>
+    <div>
+      <label>Folio: </label>
+      <input type="text" id="folioInput" value="123456789" oninput="actualizarCodigo()">
+    </div>
     <button onclick="window.print()" class="btn-print">Imprimir / Guardar PDF</button>
   </div>
 
-  <!-- Hoja Imprimible -->
+  <!-- Hoja Documento -->
   <div class="documento">
     
-    <!-- Encabezado Superior -->
+    <!-- Encabezado -->
     <div class="header-grid">
-      <!-- Sección Logo y Título -->
+      <!-- Columna Izquierda: Logo, Títulos y Código de Barras juntos -->
       <div class="header-left">
         <div class="logo-container">
-          <img id="logoImg" src="https://via.placeholder.com/300x80/cccccc/333333?text=LOGO+AUTOMATICO+AQUI" alt="Logo">
+          <img id="logoImg" src="https://via.placeholder.com/260x50/ffffff/000000?text=LOGO+INSTITUCIONAL" alt="Logo">
         </div>
-        <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
-        <h1 class="titulo">RECETA INDIVIDUAL</h1>
+        <div class="titulos-bloque">
+          <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
+          <h1 class="titulo">RECETA INDIVIDUAL</h1>
+        </div>
+        <div class="barcode-container">
+          <svg id="barcode"></svg>
+        </div>
       </div>
 
-      <!-- Cuadro Datos del Paciente -->
+      <!-- Columna Derecha: Cuadro del Paciente -->
       <div class="box-paciente">
-        <div class="campo-linea center">
-          <input type="text" value="APELLIDO PATERNO MATERNO NOMBRE(S)" class="input-full center bold">
-          <span class="label-under">NOMBRE DEL PACIENTE</span>
+        <div class="nss-row">
+          <div><span class="lbl-top">NSS:</span> <input type="text" value="45465651" class="inp-clean bold"></div>
+          <div><span class="lbl-top">A.MED</span> <input type="text" value="16515615516" class="inp-clean bold"></div>
         </div>
+
         <div class="campo-linea center">
-          <input type="text" value="XXXX-XXXXXX-X" class="input-full center bold">
+          <span class="label-under">NOMBRE DEL PACIENTE</span>
+          <input type="text" value="Jaime Leonardo Garcia Mendez" class="input-full center bold inp-clean">
         </div>
 
         <div class="grid-2col">
           <div class="campo-inline">
             <label>DELEGACIÓN:</label>
-            <input type="text" value="NORTE">
+            <input type="text" value="Hermosillo" class="inp-clean">
           </div>
           <div></div>
           <div class="campo-inline">
             <label>UNIDAD:</label>
-            <input type="text" value="UMF 01">
+            <input type="text" value="UMF 05" class="inp-clean">
           </div>
           <div class="campo-inline">
-            <input type="text" value="33" class="w-small">
+            <label>Cva ptal:</label>
+            <input type="text" value="5651561" class="inp-clean">
           </div>
           <div class="campo-inline">
             <label>CONSULTORIO:</label>
-            <input type="text" value="02">
+            <input type="text" value="02" class="inp-clean">
           </div>
           <div class="campo-inline">
             <label>TURNO:</label>
-            <input type="text" value="MATUTINO">
+            <input type="text" value="MATUTINO" class="inp-clean">
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Sección de Código de Barras, Folio y QR -->
+    <!-- Sección Central: Folio y QR -->
     <div class="middle-grid">
-      <div class="barcode-container">
-        <svg id="barcode"></svg>
-      </div>
-
       <div class="folio-container">
         <p class="folio-text">Folio : <span id="folioDisplay">123456789</span></p>
         <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
@@ -94,12 +96,13 @@
     <div class="body-box">
       <div class="campo-inline fecha-row">
         <label>Fecha</label>
-        <input type="text" value="11/08/2026" class="input-fecha">
+        <input type="text" value="13/02/2001" class="input-fecha inp-clean">
       </div>
 
-      <!-- Área de prescripción/indicaciones -->
+      <!-- Área editable que subraya automáticamente solo palabras en MAYÚSCULAS -->
       <div class="prescripcion-area">
-        <textarea placeholder="Escriba aquí la prescripción médica, medicamentos e indicaciones..."></textarea>
+        <textarea id="medsInput" oninput="formatearMedicamentos()" placeholder="Escriba aquí los medicamentos y sus indicaciones..."></textarea>
+        <div id="medsFormatted" class="meds-display"></div>
       </div>
 
       <!-- Pie del Cuerpo -->
@@ -107,15 +110,15 @@
         <div class="grid-medico">
           <div class="campo-inline">
             <label>Nombre y firma del médico</label>
-            <input type="text" value="DR. JUAN PÉREZ LÓPEZ">
+            <input type="text" value="DR. JUAN PÉREZ LÓPEZ" class="inp-clean">
           </div>
           <div class="campo-inline">
             <label>Cédula Profesional</label>
-            <input type="text" value="12345678">
+            <input type="text" value="12345678" class="inp-clean">
           </div>
           <div class="campo-inline right">
-            <label>Matricula</label>
-            <input type="text" value="991823" class="w-small">
+            <label>Matrícula</label>
+            <input type="text" value="991823" class="w-small inp-clean">
           </div>
         </div>
         <div class="paciente-tag">PACIENTE</div>
@@ -125,28 +128,28 @@
   </div>
 
   <script>
-    // Generar Código de Barras y QR
+    // Actualizar Folio, Código de Barras y QR
     function actualizarCodigo() {
       const folio = document.getElementById('folioInput').value || '000000000';
       document.getElementById('folioDisplay').innerText = folio;
 
-      // Código de Barras
       JsBarcode("#barcode", folio, {
         format: "CODE128",
-        height: 40,
-        displayValue: false
+        height: 35,
+        width: 1.5,
+        displayValue: false,
+        margin: 0
       });
 
-      // Código QR
       document.getElementById("qrcode").innerHTML = "";
       new QRCode(document.getElementById("qrcode"), {
         text: folio,
-        width: 90,
-        height: 90
+        width: 85,
+        height: 85
       });
     }
 
-    // Cambiar Logo
+    // Cargar Logo desde el equipo
     document.getElementById('logoInput').addEventListener('change', function(e) {
       const reader = new FileReader();
       reader.onload = function() {
@@ -157,8 +160,40 @@
       }
     });
 
-    // Inicializar códigos al cargar
+    // Función que subraya AUTOMÁTICAMENTE las palabras o bloques en MAYÚSCULAS
+    function formatearMedicamentos() {
+      const text = document.getElementById('medsInput').value;
+      const display = document.getElementById('medsFormatted');
+      
+      // Regex para detectar palabras compuestas por letras mayúsculas, números o signos de puntuación pegados
+      // que formen texto completamente en mayúsculas (mínimo 2 caracteres o letras individuales)
+      const regex = /\b([A-ZÁÉÍÓÚÑ0-9\/\.\-]+(?:\s+[A-ZÁÉÍÓÚÑ0-9\/\.\-]+)*)\b/g;
+
+      // Escapar caracteres HTML básicos
+      let htmlText = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+      // Reemplazar tokens en mayúsculas por span subrayado
+      let result = htmlText.replace(regex, function(match) {
+        // Verificar si contiene al menos una letra mayúscula
+        if (/[A-ZÁÉÍÓÚÑ]/.test(match)) {
+          return '<span class="subrayado-mayuscula">' + match + '</span>';
+        }
+        return match;
+      });
+
+      // Conservar saltos de línea
+      display.innerHTML = result.replace(/\n/g, '<br>');
+    }
+
+    // Inicializar texto de ejemplo por defecto
+    document.getElementById('medsInput').value = 
+`APIXABÁN TABLETA. CADA TABLETA CONTIENE: APIXABÁN 5 MG. ENVASE CON 60 TABLETAS. Vía de administración: Oral. Una tableta cada 12 hora(s) durante 30 día(s). Cantidad a surtir: 1 ENV.
+
+ENOXAPARINA SOLUCIÓN INYECTABLE. CADA JERINGA PRELLENADA CONTIENE: ENOXAPARINA SÓDICA 40 MG/0.4 ML. ENVASE CON 10 JERINGAS PRELLENADAS. Vía de administración: Subcutánea. Una jeringa cada 24 hora(s) durante 10 día(s). Cantidad a surtir: 1 ENV.`;
+
+    // Ejecutar inicializaciones
     actualizarCodigo();
+    formatearMedicamentos();
   </script>
 </body>
 </html>
