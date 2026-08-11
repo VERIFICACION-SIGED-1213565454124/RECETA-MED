@@ -4,125 +4,140 @@
 }
 
 body {
-  background-color: #f0f0f0;
+  background-color: #e9ecef;
   margin: 0;
-  padding: 20px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* Panel de control */
+/* Panel Superior de Control */
 .control-panel {
-  background: #fff;
-  padding: 15px 25px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background: #ffffff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
   display: flex;
-  gap: 15px;
+  gap: 20px;
   align-items: center;
-  flex-wrap: wrap;
-}
-
-.control-panel h2 {
-  font-size: 16px;
-  margin: 0 10px 0 0;
 }
 
 .btn-print {
   background-color: #0056b3;
   color: white;
   border: none;
-  padding: 8px 16px;
+  padding: 8px 14px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
 }
 
-.btn-print:hover {
-  background-color: #003d80;
-}
-
-/* Documento Hoja Carta */
+/* Hoja Carta Impresora */
 .documento {
   background: white;
   width: 210mm;
   min-height: 270mm;
-  padding: 20mm 15mm;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  padding: 12mm 15mm;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 8px;
 }
 
-/* Estilos de Entradas de Texto editable */
-input[type="text"], textarea {
-  border: none;
-  outline: none;
+/* Estilos de Entradas SIN SUBRAYADO */
+.inp-clean {
+  border: none !important;
+  outline: none !important;
   background: transparent;
-  font-size: 13px;
-}
-
-input[type="text"]:hover, textarea:hover,
-input[type="text"]:focus, textarea:focus {
-  background-color: #f8f9fa;
-  box-shadow: inset 0 0 0 1px #ccc;
+  font-size: 12px;
+  box-shadow: none !important;
 }
 
 .bold { font-weight: bold; }
 .center { text-align: center; }
 .right { text-align: right; }
-.w-small { width: 50px; }
+.w-small { width: 60px; }
 .input-full { width: 100%; }
 
-/* Layout Encabezado */
+/* Grid Encabezado */
 .header-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 20px;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 15px;
+  align-items: start;
+}
+
+/* Columna Izquierda Unificada y Alineada */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px; /* Elementos juntos */
 }
 
 .logo-container img {
-  max-width: 280px;
-  max-height: 70px;
+  max-width: 260px;
+  max-height: 55px;
   object-fit: contain;
 }
 
+.titulos-bloque {
+  margin-top: 2px;
+}
+
 .subtitulo {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: bold;
-  margin: 10px 0 2px 0;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .titulo {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 900;
-  margin: 0;
+  margin: 1px 0 0 0;
+  line-height: 1.1;
 }
 
-/* Cuadro Paciente */
+.barcode-container {
+  margin-top: 6px;
+}
+
+/* Cuadro Paciente Derecha */
 .box-paciente {
   border: 2px solid #000;
-  padding: 8px;
+  padding: 6px 8px;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
+}
+
+.nss-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #000;
+  padding-bottom: 3px;
+  font-size: 11px;
+}
+
+.lbl-top {
+  font-weight: bold;
 }
 
 .label-under {
   display: block;
-  font-size: 10px;
+  font-size: 9px;
   font-weight: bold;
-  border-top: 1px solid #000;
-  margin-top: 2px;
-  padding-top: 2px;
+  text-align: center;
+  color: #333;
 }
 
 .grid-2col {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4px 10px;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2px 6px;
   font-size: 11px;
 }
 
@@ -136,54 +151,50 @@ input[type="text"]:focus, textarea:focus {
 }
 
 .campo-inline input {
-  border-bottom: 1px solid #000;
   width: 100%;
 }
 
-/* Sección Central */
+/* Sección Folio y QR */
 .middle-grid {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr 100px;
+  display: flex;
+  justify-content: flex-end;
   align-items: center;
-  margin-top: 5px;
-}
-
-.barcode-container svg {
-  max-width: 100%;
+  gap: 15px;
+  margin-top: -30px; /* Eleva el folio y QR para alinearlo con el código de barras */
 }
 
 .folio-container {
   text-align: center;
-  padding: 0 10px;
+  max-width: 220px;
 }
 
 .folio-text {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: bold;
-  margin: 0 0 5px 0;
+  margin: 0 0 2px 0;
 }
 
 .vigencia {
-  font-size: 8px;
+  font-size: 7px;
   font-weight: bold;
   margin: 0;
-  line-height: 1.1;
+  line-height: 1;
 }
 
 .qr-container {
   border: 1px solid #000;
-  padding: 4px;
+  padding: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 98px;
-  height: 98px;
+  width: 92px;
+  height: 92px;
 }
 
-/* Cuerpo Inferior */
+/* Cuerpo de la Receta */
 .body-box {
   border: 2px solid #000;
-  padding: 12px;
+  padding: 8px 10px;
   min-height: 380px;
   display: flex;
   flex-direction: column;
@@ -197,40 +208,75 @@ input[type="text"]:focus, textarea:focus {
 }
 
 .input-fecha {
-  width: 100%;
+  width: 120px;
 }
 
+/* Área de Prescripción Interactiva */
 .prescripcion-area {
+  position: relative;
   flex-grow: 1;
-  margin: 15px 0;
+  margin: 8px 0;
+  min-height: 260px;
 }
 
+/* Textarea visible mientras se edita */
 .prescripcion-area textarea {
   width: 100%;
   height: 100%;
-  min-height: 250px;
+  min-height: 260px;
+  border: none;
+  outline: none;
   resize: none;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.5;
+  background: transparent;
+  color: transparent;
+  caret-color: black;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+/* Capa inferior que muestra el texto formateado (con subrayado en mayúsculas) */
+.meds-display {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  font-size: 12px;
+  line-height: 1.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  pointer-events: none;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+/* Regla para subrayar únicamente texto en MAYÚSCULAS */
+.subrayado-mayuscula {
+  text-decoration: underline;
+  font-weight: bold;
 }
 
 .grid-medico {
   display: grid;
-  grid-template-columns: 2fr 1.5fr 1fr;
-  gap: 15px;
+  grid-template-columns: 2fr 1.3fr 1fr;
+  gap: 10px;
   border-top: 1px solid #000;
   border-bottom: 1px solid #000;
-  padding: 6px 0;
+  padding: 4px 0;
 }
 
 .paciente-tag {
   text-align: right;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: bold;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
-/* Ocultar elementos de control al imprimir */
+/* Ajustes de Impresión */
 @media print {
   body {
     background: white;
@@ -244,9 +290,10 @@ input[type="text"]:focus, textarea:focus {
     padding: 0;
     width: 100%;
   }
-  input[type="text"]:hover, textarea:hover,
-  input[type="text"]:focus, textarea:focus {
-    background-color: transparent;
-    box-shadow: none;
+  .prescripcion-area textarea {
+    display: none; /* En la impresión solo se ve la capa con el subrayado */
+  }
+  .meds-display {
+    position: relative;
   }
 }
