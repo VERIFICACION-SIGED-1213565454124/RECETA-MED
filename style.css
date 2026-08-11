@@ -72,7 +72,7 @@ body {
   align-items: start;
 }
 
-/* Columna Izquierda */
+/* Columna Izquierda: Perfectamente Alineada */
 .left-column {
   display: flex;
   flex-direction: column;
@@ -93,14 +93,9 @@ body {
   margin: 8px 0 12px 0;
 }
 
-/* Títulos y Código de Barras Alineados al Medio */
 .titulos-bloque {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  width: 100%;
-  margin-bottom: 12px;
+  text-align: left;
+  margin-bottom: 16px;
 }
 
 .subtitulo {
@@ -108,7 +103,6 @@ body {
   font-weight: 400;
   margin: 0 0 3px 0;
   letter-spacing: 0.2px;
-  text-align: center;
 }
 
 .titulo {
@@ -117,12 +111,11 @@ body {
   letter-spacing: 0.5px;
   margin: 0;
   font-family: 'Times New Roman', Times, serif;
-  text-align: center;
 }
 
 .barcode-container {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
   margin-top: 5px;
 }
@@ -134,7 +127,7 @@ body {
   gap: 12px;
 }
 
-/* Cuadro del Paciente */
+/* Cuadro del Paciente Chico y Fijo */
 .box-paciente {
   border: 3px double #000;
   padding: 4px 8px;
