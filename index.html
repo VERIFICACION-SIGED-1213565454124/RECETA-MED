@@ -26,8 +26,8 @@
   <!-- Hoja Documento -->
   <div class="documento">
     
-    <!-- Título pequeño en esquina superior derecha -->
-    <div class="top-title-right">Receta Médica</div>
+    <!-- Encabezado numérico de página -->
+    <div class="top-title-right">Página 1 de 1</div>
 
     <!-- Encabezado -->
     <div class="header-grid">
@@ -40,9 +40,6 @@
         <div class="titulos-bloque">
           <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
           <h1 class="titulo">RECETA INDIVIDUAL</h1>
-        </div>
-        <div class="barcode-container">
-          <svg id="barcode"></svg>
         </div>
       </div>
 
@@ -94,9 +91,13 @@
       </div>
     </div>
 
-    <!-- Sección Central: Folio, QR y Leyenda -->
+    <!-- Sección Intermedia: Código de barras, Folio y QR -->
     <div class="middle-section">
       <div class="middle-grid">
+        <div class="barcode-container">
+          <svg id="barcode"></svg>
+        </div>
+
         <div class="folio-container">
           <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span>24010400686466</span></p>
           <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
@@ -106,38 +107,49 @@
           <div id="qrcode"></div>
         </div>
       </div>
-      <p class="farmacia-msg">Asegura tu medicamento presentando tu receta en Farmacia</p>
+
+      <div class="direccion-farmacia-row">
+        <input type="text" value="Lerdo de Tejada 112, Real de Villa de García, 66000 García, N.L." class="inp-clean direccion-input">
+        <span class="farmacia-msg">Asegura tu medicamento presentando tu receta en Farmacia</span>
+      </div>
     </div>
 
     <!-- Cuerpo Principal de la Receta -->
     <div class="body-box">
       <div class="campo-inline fecha-row">
-        <label>Fecha :</label>
-        <input type="text" value="Lunes 13 de mayo de 2026" class="input-fecha inp-clean">
+        <label>Fecha:</label>
+        <input type="text" value="Viernes, 31 de Julio del 2026" class="input-fecha inp-clean">
       </div>
 
       <div class="prescripcion-area">
-        <textarea id="medsInput" oninput="formatearMedicamentos()" placeholder="Escriba aquí los medicamentos e indicaciones..."></textarea>
+        <textarea id="medsInput" oninput="formatearMedicamentos()"></textarea>
         <div id="medsFormatted" class="meds-display"></div>
       </div>
 
-      <!-- Pie del Cuerpo -->
+      <!-- Pie del Cuerpo con Datos del Médico e Información Digital IMSS -->
       <div class="footer-body">
         <div class="grid-medico">
-          <div class="campo-inline">
-            <label>Nombre y firma del médico</label>
-            <input type="text" value="DR. JUAN PÉREZ LÓPEZ" class="inp-clean">
+          <div class="campo-inline flex-col">
+            <label>Nombre y firma del Médico</label>
+            <input type="text" value="VICENTE ALCANTARA SANCHEZ" class="inp-clean bold">
           </div>
-          <div class="campo-inline">
+          <div class="campo-inline flex-col">
             <label>Cédula Profesional</label>
-            <input type="text" value="12345678" class="inp-clean">
+            <input type="text" value="3162437" class="inp-clean bold">
           </div>
-          <div class="campo-inline right">
+          <div class="campo-inline flex-col right">
             <label>Matrícula</label>
-            <input type="text" value="991823" class="w-small inp-clean">
+            <input type="text" value="99155909" class="inp-clean bold text-right">
           </div>
         </div>
-        <div class="paciente-tag">PACIENTE</div>
+
+        <div class="imss-digital-row">
+          <p class="legales-imss">
+            El IMSS pensando en ti y valorando tu tiempo, hoy cuenta con trámites digitales para que no hagas más filas.
+            Visita <span class="link-bold">www.imss.gob.mx/servicios-digitales</span> o descarga la <span class="link-bold">"App IMSS Digital"</span> y realiza tus trámites desde internet de una manera rápida y sencilla.
+          </p>
+          <div class="paciente-tag">PACIENTE</div>
+        </div>
       </div>
     </div>
 
@@ -150,8 +162,8 @@
 
       JsBarcode("#barcode", folio, {
         format: "CODE128",
-        height: 45,
-        width: 1.5,
+        height: 50,
+        width: 1.6,
         displayValue: false,
         margin: 0
       });
@@ -193,7 +205,13 @@
     }
 
     document.getElementById('medsInput').value = 
-`SUBSALICILATO DE BISMUTO SUSPENSIÓN CADA 100 ML CONTIENEN: SUBSALICILATO DE BISMUTO 1.75 G. ENVASE CON 120 ML. Vía de administración: Oral. 30 ML cada 6 hora(s) durante 5 día(s).`;
+`SUBSALICILATO DE BISMUTO SUSPENSIÓN. CADA 100 ML CON TIENEN: SUBSALICILATO DE BISMUTO 1.75 G. EN VASE CON 240 ML. Vía de administración: Oral. 30 ML cada 6 hora(s) durante 5 día(s).
+Cantidad a surtir: 1 ENV.
+
+LOPERAMIDA CÁPSULA. CADA CÁPSULA CONTIENE: CLORHIDRATO DE LOPERAMIDA 2 MG. EN VASE CON 12 CÁPSULAS. Vía de administración: Oral. Una cápsula cada 8 hora(s) durante 3 día(s).
+Cantidad a surtir: 1 ENV.
+
+TRIMETOPRIMA / SULFAMETOXAZOL TABLETA. CADA TABLETA CON TIENE: TRIMETOPRIMA 160 MG Y SULFAMETOXAZOL 800 MG. EN VASE CON 14 TABLETAS. Vía de administración: Oral. Una tarjeta cada 12 hora(s) durante 7 día(s). Cantidad a surtir: 1 ENV.`;
 
     actualizarCodigo();
     formatearMedicamentos();
