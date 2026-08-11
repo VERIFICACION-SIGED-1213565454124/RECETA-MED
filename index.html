@@ -28,10 +28,10 @@
     
     <!-- Encabezado -->
     <div class="header-grid">
-      <!-- Columna Izquierda: Logo, Títulos y Código de Barras juntos -->
+      <!-- Columna Izquierda: Logo, Títulos y Código de Barras Alineados al Medio -->
       <div class="header-left">
         <div class="logo-container">
-          <img id="logoImg" src="https://via.placeholder.com/260x50/ffffff/000000?text=LOGO+INSTITUCIONAL" alt="Logo">
+          <img id="logoImg" src="https://via.placeholder.com/240x50/ffffff/000000?text=LOGO+INSTITUCIONAL" alt="Logo">
         </div>
         <div class="titulos-bloque">
           <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
@@ -46,7 +46,7 @@
       <div class="box-paciente">
         <div class="nss-row">
           <div><span class="lbl-top">NSS:</span> <input type="text" value="45465651" class="inp-clean bold"></div>
-          <div><span class="lbl-top">A.MED</span> <input type="text" value="16515615516" class="inp-clean bold"></div>
+          <div class="amed-right"><span class="lbl-top">A.MED</span> <input type="text" value="16515615516" class="inp-clean bold text-right"></div>
         </div>
 
         <div class="campo-linea center">
@@ -80,8 +80,9 @@
       </div>
     </div>
 
-    <!-- Sección Central: Folio y QR -->
+    <!-- Sección Central: Folio y QR en su propia fila independiente -->
     <div class="middle-grid">
+      <div></div> <!-- Espacio para alinear -->
       <div class="folio-container">
         <p class="folio-text">Folio : <span id="folioDisplay">123456789</span></p>
         <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
@@ -99,9 +100,9 @@
         <input type="text" value="13/02/2001" class="input-fecha inp-clean">
       </div>
 
-      <!-- Área editable que subraya automáticamente solo palabras en MAYÚSCULAS -->
+      <!-- Área editable que subraya palabras en MAYÚSCULAS -->
       <div class="prescripcion-area">
-        <textarea id="medsInput" oninput="formatearMedicamentos()" placeholder="Escriba aquí los medicamentos y sus indicaciones..."></textarea>
+        <textarea id="medsInput" oninput="formatearMedicamentos()" placeholder="Escriba aquí los medicamentos e indicaciones..."></textarea>
         <div id="medsFormatted" class="meds-display"></div>
       </div>
 
@@ -128,7 +129,6 @@
   </div>
 
   <script>
-    // Actualizar Folio, Código de Barras y QR
     function actualizarCodigo() {
       const folio = document.getElementById('folioInput').value || '000000000';
       document.getElementById('folioDisplay').innerText = folio;
@@ -136,7 +136,7 @@
       JsBarcode("#barcode", folio, {
         format: "CODE128",
         height: 35,
-        width: 1.5,
+        width: 1.4,
         displayValue: false,
         margin: 0
       });
@@ -144,12 +144,11 @@
       document.getElementById("qrcode").innerHTML = "";
       new QRCode(document.getElementById("qrcode"), {
         text: folio,
-        width: 85,
-        height: 85
+        width: 80,
+        height: 80
       });
     }
 
-    // Cargar Logo desde el equipo
     document.getElementById('logoInput').addEventListener('change', function(e) {
       const reader = new FileReader();
       reader.onload = function() {
@@ -160,38 +159,29 @@
       }
     });
 
-    // Función que subraya AUTOMÁTICAMENTE las palabras o bloques en MAYÚSCULAS
     function formatearMedicamentos() {
       const text = document.getElementById('medsInput').value;
       const display = document.getElementById('medsFormatted');
       
-      // Regex para detectar palabras compuestas por letras mayúsculas, números o signos de puntuación pegados
-      // que formen texto completamente en mayúsculas (mínimo 2 caracteres o letras individuales)
       const regex = /\b([A-ZÁÉÍÓÚÑ0-9\/\.\-]+(?:\s+[A-ZÁÉÍÓÚÑ0-9\/\.\-]+)*)\b/g;
 
-      // Escapar caracteres HTML básicos
       let htmlText = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-      // Reemplazar tokens en mayúsculas por span subrayado
       let result = htmlText.replace(regex, function(match) {
-        // Verificar si contiene al menos una letra mayúscula
         if (/[A-ZÁÉÍÓÚÑ]/.test(match)) {
           return '<span class="subrayado-mayuscula">' + match + '</span>';
         }
         return match;
       });
 
-      // Conservar saltos de línea
       display.innerHTML = result.replace(/\n/g, '<br>');
     }
 
-    // Inicializar texto de ejemplo por defecto
     document.getElementById('medsInput').value = 
 `APIXABÁN TABLETA. CADA TABLETA CONTIENE: APIXABÁN 5 MG. ENVASE CON 60 TABLETAS. Vía de administración: Oral. Una tableta cada 12 hora(s) durante 30 día(s). Cantidad a surtir: 1 ENV.
 
 ENOXAPARINA SOLUCIÓN INYECTABLE. CADA JERINGA PRELLENADA CONTIENE: ENOXAPARINA SÓDICA 40 MG/0.4 ML. ENVASE CON 10 JERINGAS PRELLENADAS. Vía de administración: Subcutánea. Una jeringa cada 24 hora(s) durante 10 día(s). Cantidad a surtir: 1 ENV.`;
 
-    // Ejecutar inicializaciones
     actualizarCodigo();
     formatearMedicamentos();
   </script>
