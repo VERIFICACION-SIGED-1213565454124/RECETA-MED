@@ -12,7 +12,7 @@ body {
   align-items: center;
 }
 
-/* Panel Superior de Control */
+/* Panel Superior */
 .control-panel {
   background: #ffffff;
   padding: 10px 20px;
@@ -34,19 +34,27 @@ body {
   font-weight: bold;
 }
 
-/* Hoja Carta Impresora */
+/* Documento Principal */
 .documento {
   background: white;
   width: 210mm;
   min-height: 270mm;
-  padding: 12mm 15mm;
+  padding: 8mm 15mm 12mm 15mm;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 6px;
 }
 
-/* Estilos de Entradas SIN SUBRAYADO */
+/* Texto Superior Derecha */
+.top-title-right {
+  text-align: right;
+  font-size: 11px;
+  color: #333;
+  margin-bottom: 2px;
+}
+
+/* Inputs limpios */
 .inp-clean {
   border: none !important;
   outline: none !important;
@@ -65,28 +73,28 @@ body {
 /* Grid Encabezado */
 .header-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.05fr;
   gap: 15px;
   align-items: start;
 }
 
-/* Columna Izquierda: ALINEADA AL MEDIO (CENTRO) */
+/* Columna Izquierda */
 .header-left {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centrado horizontal */
-  text-align: center; /* Centrado de texto */
-  gap: 3px;
+  align-items: center;
+  text-align: center;
+  gap: 4px;
 }
 
 .logo-container img {
   max-width: 240px;
-  max-height: 50px;
+  max-height: 48px;
   object-fit: contain;
 }
 
 .titulos-bloque {
-  margin-top: 2px;
+  margin-top: 1px;
 }
 
 .subtitulo {
@@ -104,7 +112,7 @@ body {
 }
 
 .barcode-container {
-  margin-top: 4px;
+  margin-top: 6px;
   display: flex;
   justify-content: center;
 }
@@ -121,8 +129,7 @@ body {
 .nss-row {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px solid #000;
-  padding-bottom: 3px;
+  padding-bottom: 1px;
   font-size: 11px;
 }
 
@@ -167,9 +174,9 @@ body {
 /* Sección Folio y QR */
 .middle-grid {
   display: grid;
-  grid-template-columns: 1fr 1.2fr 85px;
+  grid-template-columns: 1fr 1.2fr 75px;
   align-items: center;
-  margin-top: 2px;
+  margin: 4px 0;
 }
 
 .folio-container {
@@ -189,14 +196,15 @@ body {
   line-height: 1;
 }
 
+/* Contenedor del QR ajustado para no encimarse */
 .qr-container {
   border: 1px solid #000;
   padding: 2px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 84px;
-  height: 84px;
+  width: 72px;
+  height: 72px;
   margin-left: auto;
 }
 
@@ -220,7 +228,6 @@ body {
   width: 120px;
 }
 
-/* Área de Prescripción */
 .prescripcion-area {
   position: relative;
   flex-grow: 1;
@@ -266,13 +273,11 @@ body {
   font-weight: bold;
 }
 
-/* Pie de Receta SIN LÍNEA INFERIOR */
 .grid-medico {
   display: grid;
   grid-template-columns: 2fr 1.3fr 1fr;
   gap: 10px;
   border-top: 1px solid #000;
-  /* Se eliminó border-bottom */
   padding-top: 4px;
 }
 
@@ -283,7 +288,7 @@ body {
   margin-top: 4px;
 }
 
-/* Ajustes de Impresión */
+/* Impresión */
 @media print {
   body {
     background: white;
