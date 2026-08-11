@@ -18,7 +18,7 @@
     </div>
     <div>
       <label>Folio: </label>
-      <input type="text" id="folioInput" value="123456789" oninput="actualizarCodigo()">
+      <input type="text" id="folioInput" value="24010400686466" oninput="actualizarCodigo()">
     </div>
     <button onclick="window.print()" class="btn-print">Imprimir / Guardar PDF</button>
   </div>
@@ -31,11 +31,12 @@
 
     <!-- Encabezado -->
     <div class="header-grid">
-      <!-- Columna Izquierda: Logo, Títulos y Código de Barras centrados entre sí -->
+      <!-- Columna Izquierda: Logo, Títulos y Código de Barras -->
       <div class="header-left">
         <div class="logo-container">
-          <img id="logoImg" src="https://via.placeholder.com/240x50/ffffff/000000?text=LOGO+INSTITUCIONAL" alt="Logo">
+          <img id="logoImg" src="https://upload.wikimedia.org/wikipedia/commons/f/f7/IMSS_Logo.svg" alt="Logo IMSS">
         </div>
+        <hr class="header-divider">
         <div class="titulos-bloque">
           <p class="subtitulo">DIRECCIÓN DE PRESTACIONES MÉDICAS</p>
           <h1 class="titulo">RECETA INDIVIDUAL</h1>
@@ -47,14 +48,20 @@
 
       <!-- Columna Derecha: Cuadro del Paciente -->
       <div class="box-paciente">
-        <div class="nss-row">
-          <div><span class="lbl-top">NSS:</span> <input type="text" value="45465651" class="inp-clean bold"></div>
-          <div class="amed-right"><span class="lbl-top">A.MED</span> <input type="text" value="16515615516" class="inp-clean bold text-right"></div>
+        <div class="nss-amed-grid">
+          <div class="col-nss">
+            <span class="lbl-top">NSS:</span>
+            <input type="text" value="45465651" class="inp-clean bold input-value">
+          </div>
+          <div class="col-amed">
+            <span class="lbl-top">A.MED</span>
+            <input type="text" value="16515615516" class="inp-clean bold input-value text-right">
+          </div>
         </div>
 
         <div class="campo-linea center">
           <span class="label-under">NOMBRE DEL PACIENTE</span>
-          <input type="text" value="Jaime Leonardo Garcia Mendez" class="input-full center bold inp-clean">
+          <input type="text" value="Jaime Leonardo Garcia Mendez" class="input-full center bold inp-clean paciente-nombre">
         </div>
 
         <div class="grid-2col">
@@ -83,24 +90,26 @@
       </div>
     </div>
 
-    <!-- Sección Central: Folio y QR ajustado sin tocar bordes -->
-    <div class="middle-grid">
-      <div></div>
-      <div class="folio-container">
-        <p class="folio-text">Folio : <span id="folioDisplay">123456789</span></p>
-        <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
-      </div>
+    <!-- Sección Central: Folio, Mensaje y QR -->
+    <div class="middle-section">
+      <div class="middle-grid">
+        <div class="folio-container">
+          <p class="folio-text">Folio: &nbsp;&nbsp;&nbsp;&nbsp;<span id="folioDisplay">24010400686466</span></p>
+          <p class="vigencia">ESTA RECETA NO SE SURTIRÁ DESPUÉS DE LAS 72 HORAS DE SU EXPEDICIÓN</p>
+        </div>
 
-      <div class="qr-container">
-        <div id="qrcode"></div>
+        <div class="qr-container">
+          <div id="qrcode"></div>
+        </div>
       </div>
+      <p class="farmacia-msg">Asegura tu medicamento presentando tu receta en Farmacia</p>
     </div>
 
     <!-- Cuerpo Principal de la Receta -->
     <div class="body-box">
       <div class="campo-inline fecha-row">
-        <label>Fecha</label>
-        <input type="text" value="13/02/2001" class="input-fecha inp-clean">
+        <label>Fecha :</label>
+        <input type="text" value="Lunes 13 de mayo de 2026" class="input-fecha inp-clean">
       </div>
 
       <div class="prescripcion-area">
@@ -137,18 +146,17 @@
 
       JsBarcode("#barcode", folio, {
         format: "CODE128",
-        height: 35,
-        width: 1.4,
+        height: 45,
+        width: 1.5,
         displayValue: false,
         margin: 0
       });
 
-      // QR ajustado a 68px para evitar interrupción con los recuadros
       document.getElementById("qrcode").innerHTML = "";
       new QRCode(document.getElementById("qrcode"), {
         text: folio,
-        width: 68,
-        height: 68
+        width: 65,
+        height: 65
       });
     }
 
