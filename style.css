@@ -1,0 +1,252 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Panel de control */
+.control-panel {
+  background: #fff;
+  padding: 15px 25px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.control-panel h2 {
+  font-size: 16px;
+  margin: 0 10px 0 0;
+}
+
+.btn-print {
+  background-color: #0056b3;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-print:hover {
+  background-color: #003d80;
+}
+
+/* Documento Hoja Carta */
+.documento {
+  background: white;
+  width: 210mm;
+  min-height: 270mm;
+  padding: 20mm 15mm;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Estilos de Entradas de Texto editable */
+input[type="text"], textarea {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 13px;
+}
+
+input[type="text"]:hover, textarea:hover,
+input[type="text"]:focus, textarea:focus {
+  background-color: #f8f9fa;
+  box-shadow: inset 0 0 0 1px #ccc;
+}
+
+.bold { font-weight: bold; }
+.center { text-align: center; }
+.right { text-align: right; }
+.w-small { width: 50px; }
+.input-full { width: 100%; }
+
+/* Layout Encabezado */
+.header-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+}
+
+.logo-container img {
+  max-width: 280px;
+  max-height: 70px;
+  object-fit: contain;
+}
+
+.subtitulo {
+  font-size: 11px;
+  font-weight: bold;
+  margin: 10px 0 2px 0;
+}
+
+.titulo {
+  font-size: 18px;
+  font-weight: 900;
+  margin: 0;
+}
+
+/* Cuadro Paciente */
+.box-paciente {
+  border: 2px solid #000;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label-under {
+  display: block;
+  font-size: 10px;
+  font-weight: bold;
+  border-top: 1px solid #000;
+  margin-top: 2px;
+  padding-top: 2px;
+}
+
+.grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px 10px;
+  font-size: 11px;
+}
+
+.campo-inline {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.campo-inline input {
+  border-bottom: 1px solid #000;
+  width: 100%;
+}
+
+/* Sección Central */
+.middle-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 100px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.barcode-container svg {
+  max-width: 100%;
+}
+
+.folio-container {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.folio-text {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+}
+
+.vigencia {
+  font-size: 8px;
+  font-weight: bold;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.qr-container {
+  border: 1px solid #000;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98px;
+  height: 98px;
+}
+
+/* Cuerpo Inferior */
+.body-box {
+  border: 2px solid #000;
+  padding: 12px;
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fecha-row {
+  border-bottom: 1px solid #000;
+  padding-bottom: 4px;
+  width: 100%;
+}
+
+.input-fecha {
+  width: 100%;
+}
+
+.prescripcion-area {
+  flex-grow: 1;
+  margin: 15px 0;
+}
+
+.prescripcion-area textarea {
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.grid-medico {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1fr;
+  gap: 15px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 6px 0;
+}
+
+.paciente-tag {
+  text-align: right;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* Ocultar elementos de control al imprimir */
+@media print {
+  body {
+    background: white;
+    padding: 0;
+  }
+  .control-panel {
+    display: none;
+  }
+  .documento {
+    box-shadow: none;
+    padding: 0;
+    width: 100%;
+  }
+  input[type="text"]:hover, textarea:hover,
+  input[type="text"]:focus, textarea:focus {
+    background-color: transparent;
+    box-shadow: none;
+  }
+}
