@@ -153,7 +153,7 @@
       </div>
     </div>
 
-    <!-- Pie Inferior: Link de Sistema Fijo y Fecha Editable -->
+    <!-- Pie Inferior Ajustado al Borde Inferior de la Hoja -->
     <div class="page-footer-url">
       <span class="url-sistema">http://11.105.15.16:9070/ServiciosAuxiliares/ImpReceta.jsp</span>
       <input type="text" value="29/07/2026" class="inp-clean input-fecha-footer text-right">
@@ -201,13 +201,9 @@
       const lineasProcesadas = lineas.map(linea => {
         let l = linea;
 
-        // 1. Subrayar "1 ENV." o cantidades a surtir
         l = l.replace(/\b(\d+\s+ENV\.)/g, '<span class="subrayado-mayuscula">$1</span>');
-
-        // 2. Subrayar medidas específicas de indicación (ej. "30 ML")
         l = l.replace(/\b(\d+\s+ML)\b/g, '<span class="subrayado-mayuscula">$1</span>');
 
-        // 3. Aislar la sección de "Vía de administración" o "Vía" para no subrayar la etiqueta ni lo subsiguiente
         const regexVia = /(.*?)(Vía de administración:.*|Vía.*|$)/s;
         const match = l.match(regexVia);
 
@@ -215,7 +211,6 @@
           let parteFarmaco = match[1];
           let parteVia = match[2];
 
-          // Subrayar solo en la parte del nombre del medicamento
           parteFarmaco = parteFarmaco.replace(/\b([A-ZÁÉÍÓÚÑ0-9\/\.\-]+(?:\s+[A-ZÁÉÍÓÚÑ0-9\/\.\-]+)*)\b/g, function(m) {
             if (/[A-ZÁÉÍÓÚÑ]/.test(m)) {
               return '<span class="subrayado-mayuscula">' + m + '</span>';
