@@ -48,10 +48,11 @@ body {
   background: white;
   width: 210mm;
   height: 297mm; /* Altura A4 fija */
-  padding: 8mm 12mm 8mm 12mm;
+  padding: 8mm 12mm 15mm 12mm; /* Espacio extra abajo para el footer absoluto */
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
   display: flex;
   flex-direction: column;
+  position: relative; /* Clave para el posicionamiento absoluto del footer */
 }
 
 .top-title-right {
@@ -281,7 +282,8 @@ body {
 .body-box {
   border: 1px solid #000;
   padding: 6px 10px;
-  flex-grow: 1; /* Permite que ocupe el espacio disponible arriba */
+  margin-bottom: 25px; /* Margen para no chocar con el pie absoluto */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -302,13 +304,13 @@ body {
   position: relative;
   flex-grow: 1;
   margin: 6px 0;
-  min-height: 200px;
+  min-height: 180px;
 }
 
 .prescripcion-area textarea {
   width: 100%;
   height: 100%;
-  min-height: 200px;
+  min-height: 180px;
   border: none;
   outline: none;
   resize: none;
@@ -326,7 +328,7 @@ body {
 .meds-display {
   width: 100%;
   height: 100%;
-  min-height: 200px;
+  min-height: 180px;
   font-size: 10px;
   line-height: 1.4;
   position: absolute;
@@ -377,13 +379,15 @@ body {
   font-weight: bold;
 }
 
-/* Pie Inferior: Forzado al borde inferior de la hoja */
+/* Pie Inferior: Posición Absoluta en el fondo del documento */
 .page-footer-url {
+  position: absolute;
+  bottom: 8mm; /* Fijado a 8mm del límite inferior de la página */
+  left: 12mm;
+  right: 12mm;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto; /* Empuja este elemento hasta el final de la hoja */
-  padding-top: 8px;
   font-size: 11px;
 }
 
@@ -418,6 +422,7 @@ body {
     height: auto;
     min-height: 297mm;
     padding: 12px;
+    padding-bottom: 50px;
   }
 
   .header-grid {
@@ -471,6 +476,11 @@ body {
   }
 
   .page-footer-url {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    margin-top: 15px;
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
@@ -482,7 +492,7 @@ body {
 }
 
 /* =========================================================
-   REGLAS DE IMPRESIÓN
+   REGLAS DE IMPRESIÓN (A4 RIGUROSO)
    ========================================================= */
 @page {
   size: A4;
@@ -499,9 +509,10 @@ body {
   }
   .documento {
     box-shadow: none;
-    padding: 8mm 12mm 8mm 12mm;
+    padding: 8mm 12mm 15mm 12mm;
     width: 210mm !important;
     height: 297mm !important;
+    position: relative !important;
   }
   .header-grid {
     grid-template-columns: 1fr 430px !important;
@@ -522,6 +533,10 @@ body {
     text-align: right !important;
   }
   .page-footer-url {
+    position: absolute !important;
+    bottom: 8mm !important;
+    left: 12mm !important;
+    right: 12mm !important;
     flex-direction: row !important;
     justify-content: space-between !important;
   }
